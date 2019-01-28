@@ -1,4 +1,4 @@
-Name,Short Name, x.mni, y.mni, z.mni,Lobe,Hemisphere,Long Name,Lobe,Functional System,index
+﻿Name,Short Name, x.mni, y.mni, z.mni,Lobe,Hemisphere,Long Name,Lobe,Functional System,index
 ctx-lh-bankssts,   lBSTS ,-56,-44,5, Temporal ,   L ,L bank of the superior temporal sulcus,L temporal,auditory,1
 ctx-lh-caudalanteriorcingulate,   lcACC ,-2,21,27,Cingulate ,   L ,L caudal anterior cingulate,L frontal,cingulo-opercular,2
 ctx-lh-caudalmiddlefrontal,   lcMFG ,-45,18,46,  Frontal ,   L ,L caudal middle frontal gyrus,L frontal,fronto-parietal,3
