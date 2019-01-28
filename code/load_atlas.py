@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+from scipy.io import loadmat
 
 def get_file_path(filename):
     """Find filename in the relative directory `../data/` .
@@ -16,7 +17,7 @@ def get_file_path(filename):
 
     return file_dir
 
-def load_atlas(atlas="DK", portion="cortical"):
+def load_atlas(atlas="DK", portion="all"):
     """Load atlas data and returns it as a pandas dataframe.
 
     Args:
@@ -29,6 +30,24 @@ def load_atlas(atlas="DK", portion="cortical"):
     """
     if atlas == "DK" and portion == "cortical":
         filepath = get_file_path("dk_cortical.csv")
-        atlas = pd.read_csv(filepath)
+        atlas_df = pd.read_csv(filepath)
 
-    return atlas
+    elif atlas == "DK" and portion == "all":
+        filepath = get_file_path("dk_all.csv")
+        atlas_df = pd.read_csv(filepath)
+
+    else:
+        print("atlas or portion not yet implemented.")
+
+    return atlas_df
+
+def load_connectivity(atlas="DK", portion="all"):
+
+    if atlas == "DK" and portion == "all":
+        conn_filepath = get_file_path("dk_connectivity.mat")
+        connectivity = pd.DataFrame(loadmat(conn_filepath)['meanACS'])
+        region_names = load_atlas(atlas="DK", portion="all").Name
+        connectivity.columns = list(region_names)
+        connectivity.index = list(region_names)
+
+        return(connectivity)
