@@ -1,0 +1,13 @@
+name: rajutils
+
+channels:
+  - conda-forge
+
+dependencies:
+  - ruby
+  - pip:
+    - numpy==1.16.*
+    - matplotlib==3.*
+    - pandas
+    - scipy
+    - notebook
