@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 from scipy.io import loadmat
+import numpy as np
+from nilearn import plotting
 
 def get_file_path(filename):
     """Find filename in the relative directory `../data/` .
@@ -51,3 +53,11 @@ def load_connectivity(atlas="DK", portion="all"):
         connectivity.index = list(region_names)
 
         return(connectivity)
+
+def plot_glass_brains(color, coords, size):
+
+    num_regions = len(coords)
+
+    connec = np.array([[0]*num_regions]*num_regions)
+
+    plotting.plot_connectome(connec, coords, node_size = size, node_color=color, display_mode='lyrz')
