@@ -1,4 +1,4 @@
-import numpy as numpy
+import numpy as np
 
 def random_Cij_und(V, E):
     """Generate undirected binary random network:
@@ -55,7 +55,7 @@ def add_weights(Cij, u, s):
        wCij (array): Cij with weights added to non-zero vertices
     """
     # find vertices in upper triangle:
-    inds = np.squeeze(np.asarray(np.where(np.triu(randCij)))) # find upper triangle vertices
+    inds = np.squeeze(np.asarray(np.where(np.triu(Cij)))) # find upper triangle vertices
     # create new weighted Cij
     wCij = np.zeros([86,86])
     # assign value to inds based on mean u and variance s
@@ -74,7 +74,7 @@ def exp_neg_dist_Cij(distance_matrix):
     Returns:
         dist_wCij [array]: symmetric distance weighted network with 0 diagonal
     """
-    negdist = np.exp(-dist_mat)
+    negdist = np.exp(-distance_matrix)
     negdist = negdist - np.diag(np.diag(negdist))
 
     V = len(negdist) #number of vertices
