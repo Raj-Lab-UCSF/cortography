@@ -97,3 +97,31 @@ def exp_neg_dist_Cij(distance_matrix):
     
     dist_wCij = dist_wCij + np.transpose(dist_wCij)
     return dist_wCij
+
+def distance_matrix(C, distances):
+    """Generate distance matrix for a given matrix, the values of distances in output is sampled from a given distance matrix
+    
+    Args:
+        C ([array]): [connectome you want to pair a random distance matrix for]
+        distances ([array]): [description]
+    
+    Returns:
+        [array]: [distance matrix]
+    """
+    V = len(C) # number of vertices
+    Drand = np.zeros([V,V])
+    
+    # find index of upper triangle where edges have non-zero value:
+    triu_inds = np.triu(C)
+    lin_i = np.asarray(triu_inds.nonzero())
+    
+    # create distance distribution to sample from
+    dist_ind = np.asarray(np.nonzero(np.triu(distances)))
+    dist_dist = distances[dist_ind[0,:],dist_ind[1,:]]
+    
+    # assign randomly sampled values to lin_i
+    for i in np.arange(0,lin_i.shape[1]):
+        Drand[lin_i[0,i],lin_i[1,i]] = np.random.choice(dist_dist,replace = False)
+    
+    Drand = Drand + np.transpose(Drand)
+    return Drand
