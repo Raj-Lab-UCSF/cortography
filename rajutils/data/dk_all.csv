@@ -81,7 +81,7 @@ Right-Thalamus-Proper,-,-,-,-,Right,subcortical,Right-Thalamus-Proper,Thalamus_P
 Right-Caudate,-,-,-,-,Right,subcortical,Right-Caudate,Caudate_R,caudate_rh,R Subcortical,subcortical,80
 Right-Putamen,-,-,-,-,Right,subcortical,Right-Putamen,Putamen_R,putamen_rh,R Subcortical,subcortical,81
 Right-Pallidum,-,-,-,-,Right,subcortical,Right-Pallidum,Pallidum_R,pallidum_rh,R Subcortical,subcortical,82
-Right-Hippocampus,-,-,-,-,Right,subcortical,Right-Hippocampus,Hippocampus_R,hippocampus_rh,R Subcortical,subcortical,83
+Right-Hippocampus,,24,-28,-10,Right,subcortical,Right-Hippocampus,Hippocampus_R,hippocampus_rh,R Subcortical,subcortical,83
 Right-Amygdala,-,-,-,-,Right,subcortical,Right-Amygdala,Amygdala_R,amygdala_rh,R Subcortical,subcortical,84
 Right-Accumbens-area,-,-,-,-,Right,subcortical,Right-Accumbens-area,Accumbens_area_R,accumbensarea_rh,R Subcortical,subcortical,85
 Right-VentralDC/Hypothalamus,-,-,-,-,Right,subcortical,Right-VentralDC/Hypothalamus,Hypothalamus_R,ventralDC/Hypothalamus_rh,R Subcortical,subcortical,86
