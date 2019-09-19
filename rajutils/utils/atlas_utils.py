@@ -24,7 +24,7 @@ def load_atlas(atlas="DK", portion="all"):
 
     Args:
         atlas (str): Atlas name: "DK" or "AAL".
-        portion (str): Options are: "cortical", "subcortical", "all".
+        portion (str): Options are: "LR", "RL", "LRLR", "LRRL".
 
     Returns:
         atlas (pd.DataFrame): Database with atlas information.
@@ -62,17 +62,26 @@ def load_atlas(atlas="DK", portion="all"):
                 indices = list(cort_L_idx) + list(cort_R_idx)
                 indices += list(subcort_R_idx) + list(subcort_L_idx)
 
+            elif portion == 'RLLR':
+                indices = list(cort_R_idx) + list(cort_L_idx)
+                indices += list(subcort_L_idx) + list(subcort_R_idx)
     else:
         raise NameError("Atlas option not found.")
 
-    return dk.loc[indices]
+    return dk.loc[indices].set_index('Name')
 
-def load_connectivity(atlas="DK", portion="all"):
+def load_connectivity(atlas="DK", portion="RLLR"):
 
-    if atlas == "DK" and portion == "all":
+    if atlas == "DK":
         conn_filepath = get_file_path("dk_connectivity.mat")
         connectivity = pd.DataFrame(loadmat(conn_filepath)['meanACS'])
-        region_names = load_atlas(atlas="DK", portion="all").Name[:86]
+        atlas = load_atlas(atlas="DK", portion=portion)
+        regions_to_drop = ['Left-VentralDC',
+                           'Left-choroid-plexus',
+                           'Right-VentralDC',
+                           'Right-choroid-plexus']
+        atlas = load_atlas('DK','RLLR').drop(regions_to_drop)
+        region_names = atlas.index
         connectivity.columns = list(region_names)
         connectivity.index = list(region_names)
 
@@ -81,13 +90,17 @@ def load_connectivity(atlas="DK", portion="all"):
 def load_laplacian(n=0):
 
     laplacian_filepath = get_file_path('laplacians.mat')
-    laplacians = pd.DataFrame(loadmat(laplacian_filepath)['laplacians'][0][0][n])
-    region_names = load_atlas(atlas="DK", portion="all").Name[:86]
+    laplacian = pd.DataFrame(loadmat(laplacian_filepath)['laplacians'][0][0][n])
+    DK = load_atlas(atlas="DK", portion="LRRL")
+    DK = DK.drop(['Right-choroid-plexus',
+                  'Left-choroid-plexus',
+                  'Right-VentralDC',
+                  'Left-VentralDC'], axis=0)
 
-    laplacians.columns = list(region_names)
-    laplacians.index = list(region_names)
+    laplacian.columns = list(DK.index)
+    laplacian.index = list(DK.index)
 
-    return(laplacians)
+    return(laplacian)
 
 def plot_glass_brains(color, coords, size):
 
