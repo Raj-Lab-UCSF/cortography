@@ -31,7 +31,7 @@ def load_atlas(atlas="DK", portion="all"):
 
     """
     if atlas == "DK":
-        filepath = get_file_path("dk_all.csv")
+        filepath = get_file_path("atlases/DK/dk_all.csv")
         dk = pd.read_csv(filepath)
 
         if portion == 'all':
@@ -73,7 +73,7 @@ def load_atlas(atlas="DK", portion="all"):
 def load_connectivity(atlas="DK", portion="RLLR"):
 
     if atlas == "DK":
-        conn_filepath = get_file_path("dk_connectivity.mat")
+        conn_filepath = get_file_path("connectivity_matrices/dk_connectivity.mat")
         connectivity = pd.DataFrame(loadmat(conn_filepath)['meanACS'])
         atlas = load_atlas(atlas="DK", portion=portion)
         regions_to_drop = ['Left-VentralDC',
@@ -89,7 +89,7 @@ def load_connectivity(atlas="DK", portion="RLLR"):
 
 def load_laplacian(n=0):
 
-    laplacian_filepath = get_file_path('laplacians.mat')
+    laplacian_filepath = get_file_path('connectivity_matrices/laplacians.mat')
     laplacian = pd.DataFrame(loadmat(laplacian_filepath)['laplacians'][0][0][n])
     DK = load_atlas(atlas="DK", portion="LRRL")
     DK = DK.drop(['Right-choroid-plexus',
