@@ -1,0 +1,91 @@
+﻿Name,Short Name,x.mni,y.mni,z.mni,Hemisphere,Cortex,Other Name,Other Name 2,Other Name 3,lobe,functional_system,Braak stage,index
+ctx-lh-bankssts,   lBSTS ,-56,-44,5,Left,cortical,lh_bankssts,Bankssts_L,bankssts_lh,L temporal,auditory,5,1
+ctx-lh-caudalanteriorcingulate,   lcACC ,-2,21,27,Left,cortical,lh_caudalanteriorcingulate,Caudalanteriorcingulate_L,caudalanteriorcingulate_lh,L frontal,cingulo-opercular,4,2
+ctx-lh-caudalmiddlefrontal,   lcMFG ,-45,18,46,Left,cortical,lh_caudalmiddlefrontal,Caudalmiddlefrontal_L,caudalmiddlefrontal_lh,L frontal,fronto-parietal,5,3
+ctx-lh-cuneus,    lCUN ,-1,-82,20,Left,cortical,lh_cuneus,Cuneus_L,cuneus_lh,L occipital,visual,6,4
+ctx-lh-entorhinal,    lENT ,-16,-10,-29,Left,cortical,lh_entorhinal,Entorhinal_L,entorhinal_lh,L temporal,visual,1,5
+ctx-lh-fusiform,    lFUS ,-24,-54,-16,Left,cortical,lh_fusiform,Fusiform_L,fusiform_lh,L temporal,visual,3,6
+ctx-lh-inferiorparietal,    lIPL ,-47,-70,31,Left,cortical,lh_inferiorparietal,Inferiorparietal_L,inferiorparietal_lh,L parietal,fronto-parietal,5,7
+ctx-lh-inferiortemporal,    lITG ,-56,-32,-24,Left,cortical,lh_inferiortemporal,Inferiortemporal_L,inferiortemporal_lh,L temporal,visual,4,8
+ctx-lh-isthmuscingulate,    liCC ,-1,-48,25,Left,cortical,lh_isthmuscingulate,Isthmuscingulate_L,isthmuscingulate_lh,L temporal,default mode,4,9
+ctx-lh-lateraloccipital,    lLOG ,-43,-87,1,Left,cortical,lh_lateraloccipital,Lateraloccipital_L,lateraloccipital_lh,L occipital,visual,5,10
+ctx-lh-lateralorbitofrontal,    lLOF ,-35.98,30.71,-12.11,Left,cortical,lh_lateralorbitofrontal,Lateralorbitofrontal_L,lateralorbitofrontal_lh,L frontal,ventral attention,5,11
+ctx-lh-lingual,   lLING ,-3,-73,-1,Left,cortical,lh_lingual,Lingual_L,lingual_lh,L occipital,visual,3,12
+ctx-lh-medialorbitofrontal,    lMOF ,-4,44,-14,Left,cortical,lh_medialorbitofrontal,Medialorbitofrontal_L,medialorbitofrontal_lh,L frontal,fronto-parietal,5,13
+ctx-lh-middletemporal,    lMTG ,-68,-29,-13,Left,cortical,lh_middletemporal,Middletemporal_L,middletemporal_lh,L temporal,other,4,14
+ctx-lh-parahippocampal,   lPARH ,-18,-30,-18,Left,cortical,lh_parahippocampal,Parahippocampal_L,parahippocampal_lh,L temporal,other,3,15
+ctx-lh-paracentral,  lparaC ,-3,-28,62,Left,cortical,lh_paracentral,Paracentral_L,paracentral_lh,L parietal,motor and somatosensory,6,16
+ctx-lh-parsopercularis,  lpOPER ,-57,22,18,Left,cortical,lh_parsopercularis,Parsopercularis_L,parsopercularis_lh,L frontal,cingulo-opercular,5,17
+ctx-lh-parsorbitalis,   lpORB ,-44,48,-13,Left,cortical,lh_parsorbitalis,Parsorbitalis_L,parsorbitalis_lh,L frontal,cingulo-opercular,5,18
+ctx-lh-parstriangularis,   lpTRI ,-50,35,3,Left,cortical,lh_parstriangularis,Parstriangularis_L,parstriangularis_lh,L frontal,fronto-parietal,5,19
+ctx-lh-pericalcarine,lperiCAL ,-12,-89,3,Left,cortical,lh_pericalcarine,Pericalcarine_L,pericalcarine_lh,L occipital,visual,6,20
+ctx-lh-postcentral,  lpostC ,-50,-26,58,Left,cortical,lh_postcentral,Postcentral_L,postcentral_lh,L parietal,motor and somatosensory,6,21
+ctx-lh-posteriorcingulate,    lPCC ,-1,-18,38,Left,cortical,lh_posteriorcingulate,Posteriorcingulate_L,posteriorcingulate_lh,L parietal,default mode,4,22
+ctx-lh-precentral,   lpreC ,-44,-12,59,Left,cortical,lh_precentral,Precentral_L,precentral_lh,L frontal,motor and somatosensory,6,23
+ctx-lh-precuneus,   lPCUN ,-9,-59,46,Left,cortical,lh_precuneus,Precuneus_L,precuneus_lh,L parietal,default mode,5,24
+ctx-lh-rostralanteriorcingulate,   lrACC ,-2,39,6,Left,cortical,lh_rostralanteriorcingulate,Rostralanteriorcingulate_L,rostralanteriorcingulate_lh,L frontal,cingulo-opercular,4,25
+ctx-lh-rostralmiddlefrontal,   lrMFG ,-34,53,17,Left,cortical,lh_rostralmiddlefrontal,Rostralmiddlefrontal_L,rostralmiddlefrontal_lh,L frontal,cingulo-opercular,5,26
+ctx-lh-superiorfrontal,    lSFG ,-21,38,50,Left,cortical,lh_superiorfrontal,Superiorfrontal_L,superiorfrontal_lh,L frontal,default mode,5,27
+ctx-lh-superiorparietal,    lSPL ,-25,-62,63,Left,cortical,lh_superiorparietal,Superiorparietal_L,superiorparietal_lh,L parietal,dorsal attention,5,28
+ctx-lh-superiortemporal,    lSTG ,-63,-7,-1,Left,cortical,lh_superiortemporal,Superiortemporal_L,superiortemporal_lh,L temporal,auditory,5,29
+ctx-lh-supramarginal,   lSMAR ,-60,-41,39,Left,cortical,lh_supramarginal,Supramarginal_L,supramarginal_lh,L parietal,cingulo-opercular,5,30
+ctx-lh-frontalpole,     lFP ,-9,65,-12,Left,cortical,lh_frontalpole,Frontalpole_L,frontalpole_lh,L frontal,fronto-parietal,5,31
+ctx-lh-temporalpole,     lTP ,-26,15,-35,Left,cortical,lh_temporalpole,Temporalpole_L,temporalpole_lh,L temporal,other,4,32
+ctx-lh-transversetemporal,     lTT ,-49,-23,9,Left,cortical,lh_transversetemporal,Transversetemporal_L,transversetemporal_lh,L temporal,auditory,5,33
+ctx-lh-insula,    lINS ,-41,13,-6,Left,cortical,lh_insula,Insula_L,insula_lh,L temporal,fronto-parietal,4,34
+ctx-rh-bankssts,   rBSTS ,50,-42,6,Right,cortical,rh_bankssts,Bankssts_R,bankssts_rh,R temporal,auditory,5,35
+ctx-rh-caudalanteriorcingulate,   rcACC ,3,21,27,Right,cortical,rh_caudalanteriorcingulate,Caudalanteriorcingulate_R,caudalanteriorcingulate_rh,R frontal,cingulo-opercular,4,36
+ctx-rh-caudalmiddlefrontal,   rcMFG ,43,14,43,Right,cortical,rh_caudalmiddlefrontal,Caudalmiddlefrontal_R,caudalmiddlefrontal_rh,R frontal,fronto-parietal,5,37
+ctx-rh-cuneus,    rCUN ,3,-81,19,Right,cortical,rh_cuneus,Cuneus_R,cuneus_rh,R occipital,visual,6,38
+ctx-rh-entorhinal,    rENT ,21,-4,-32,Right,cortical,rh_entorhinal,Entorhinal_R,entorhinal_rh,R temporal,visual,1,39
+ctx-rh-fusiform,    rFUS ,33,-52,-19,Right,cortical,rh_fusiform,Fusiform_R,fusiform_rh,R temporal,visual,3,40
+ctx-rh-inferiorparietal,    rIPL ,48,-67,29,Right,cortical,rh_inferiorparietal,Inferiorparietal_R,inferiorparietal_rh,R parietal,fronto-parietal,5,41
+ctx-rh-inferiortemporal,    rITG ,61,-31,-27,Right,cortical,rh_inferiortemporal,Inferiortemporal_R,inferiortemporal_rh,R temporal,visual,4,42
+ctx-rh-isthmuscingulate,    riCC ,1,-48,26,Right,cortical,rh_isthmuscingulate,Isthmuscingulate_R,isthmuscingulate_rh,R temporal,default mode,4,43
+ctx-rh-lateraloccipital,    rLOG ,38,-88,1,Right,cortical,rh_lateraloccipital,Lateraloccipital_R,lateraloccipital_rh,R occipital,visual,5,44
+ctx-rh-lateralorbitofrontal,    rLOF ,20,38,-21,Right,cortical,rh_lateralorbitofrontal,Lateralorbitofrontal_R,lateralorbitofrontal_rh,R frontal,ventral attention,5,45
+ctx-rh-lingual,   rLING ,5,-69,-1,Right,cortical,rh_lingual,Lingual_R,lingual_rh,R occipital,visual,3,46
+ctx-rh-medialorbitofrontal,    rMOF ,7,45,-13,Right,cortical,rh_medialorbitofrontal,Medialorbitofrontal_R,medialorbitofrontal_rh,R frontal,fronto-parietal,5,47
+ctx-rh-middletemporal,    rMTG ,69,-24,-14,Right,cortical,rh_middletemporal,Middletemporal_R,middletemporal_rh,R temporal,other,4,48
+ctx-rh-parahippocampal,   rPARH ,20,-29,-17,Right,cortical,rh_parahippocampal,Parahippocampal_R,parahippocampal_rh,R temporal,other,3,49
+ctx-rh-paracentral,  rparaC ,4,-25,61,Right,cortical,rh_paracentral,Paracentral_R,paracentral_rh,R parietal,motor and somatosensory,6,50
+ctx-rh-parsopercularis,  rpOPER ,57,15,17,Right,cortical,rh_parsopercularis,Parsopercularis_R,parsopercularis_rh,R frontal,cingulo-opercular,5,51
+ctx-rh-parsorbitalis,   rpORB ,49,40,-13,Right,cortical,rh_parsorbitalis,Parsorbitalis_R,parsorbitalis_rh,R frontal,cingulo-opercular,5,52
+ctx-rh-parstriangularis,   rpTRI ,55,31,5,Right,cortical,rh_parstriangularis,Parstriangularis_R,parstriangularis_rh,R frontal,fronto-parietal,5,53
+ctx-rh-pericalcarine,rperiCAL ,14,-85,5,Right,cortical,rh_pericalcarine,Pericalcarine_R,pericalcarine_rh,R occipital,visual,6,54
+ctx-rh-postcentral,  rpostC ,51,-23,56,Right,cortical,rh_postcentral,Postcentral_R,postcentral_rh,R parietal,motor and somatosensory,6,55
+ctx-rh-posteriorcingulate,    rPCC ,1,-16,37,Right,cortical,rh_posteriorcingulate,Posteriorcingulate_R,posteriorcingulate_rh,R parietal,default mode,4,56
+ctx-rh-precentral,   rpreC ,47,-9,54,Right,cortical,rh_precentral,Precentral_R,precentral_rh,R frontal,motor and somatosensory,6,57
+ctx-rh-precuneus,   rPCUN ,7,-57,41,Right,cortical,rh_precuneus,Precuneus_R,precuneus_rh,R parietal,default mode,5,58
+ctx-rh-rostralanteriorcingulate,   rrACC ,4,38,4,Right,cortical,rh_rostralanteriorcingulate,Rostralanteriorcingulate_R,rostralanteriorcingulate_rh,R frontal,cingulo-opercular,4,59
+ctx-rh-rostralmiddlefrontal,   rrMFG ,43,45,21,Right,cortical,rh_rostralmiddlefrontal,Rostralmiddlefrontal_R,rostralmiddlefrontal_rh,R frontal,cingulo-opercular,5,60
+ctx-rh-superiorfrontal,    rSFG ,16,34,53,Right,cortical,rh_superiorfrontal,Superiorfrontal_R,superiorfrontal_rh,R frontal,default mode,5,61
+ctx-rh-superiorparietal,    rSPL ,17,-65,59,Right,cortical,rh_superiorparietal,Superiorparietal_R,superiorparietal_rh,R parietal,dorsal attention,5,62
+ctx-rh-superiortemporal,    rSTG ,67,-12,-1,Right,cortical,rh_superiortemporal,Superiortemporal_R,superiortemporal_rh,R temporal,auditory,5,63
+ctx-rh-supramarginal,   rSMAR ,65,-36,35,Right,cortical,rh_supramarginal,Supramarginal_R,supramarginal_rh,R parietal,cingulo-opercular,5,64
+ctx-rh-frontalpole,     rFP ,9,64,-13,Right,cortical,rh_frontalpole,Frontalpole_R,frontalpole_rh,R frontal,fronto-parietal,5,65
+ctx-rh-temporalpole,     rTP ,37,21,-38,Right,cortical,rh_temporalpole,Temporalpole_R,temporalpole_rh,R temporal,other,4,66
+ctx-rh-transversetemporal,     rTT ,45,-25,11,Right,cortical,rh_transversetemporal,Transversetemporal_R,transversetemporal_rh,R temporal,auditory,5,67
+ctx-rh-insula,    rINS ,43,12,-6,Right,cortical,rh_insula,Insula_R,insula_rh,R temporal,fronto-parietal,4,68
+Left-Cerebellum-Cortex,-,-,-,-,Left,subcortical,Left-Cerebellum-Cortex,Cerebellum_Cortex_L,cerebellumcortex_lh,Cerebellum,NA,,69
+Left-Thalamus-Proper,-,-,-,-,Left,subcortical,Left-Thalamus-Proper,Thalamus_Proper_L,thalamusproper_lh,L Subcortical,subcortical,,70
+Left-Caudate,-,-,-,-,Left,subcortical,Left-Caudate,Caudate_L,caudate_lh,L Subcortical,subcortical,5,71
+Left-Putamen,-,-,-,-,Left,subcortical,Left-Putamen,Putamen_L,putamen_lh,L Subcortical,subcortical,5,72
+Left-Pallidum,-,-,-,-,Left,subcortical,Left-Pallidum,Pallidum_L,pallidum_lh,L Subcortical,subcortical,5,73
+Left-Hippocampus,-,-,-,-,Left,subcortical,Left-Hippocampus,Hippocampus_L,hippocampus_lh,L Subcortical,subcortical,2,74
+Left-Amygdala,-,-,-,-,Left,subcortical,Left-Amygdala,Amygdala_L,amygdala_lh,L Subcortical,subcortical,3,75
+Left-Accumbens-area,-,-,-,-,Left,subcortical,Left-Accumbens-area,Accumbens_area_L,accumbensarea_lh,L Subcortical,subcortical,5,76
+Left-VentralDC/Hypothalamus,-,-,-,-,Left,subcortical,Left-VentralDC/Hypothalamus,Hypothalamus_L,ventralDC/Hypothalamus_lh,L Subcortical,subcortical,,77
+Right-Cerebellum-Cortex,-,-,-,-,Right,subcortical,Right-Cerebellum-Cortex,Cerebellum_Cortex_R,cerebellumcortex_rh,Cerebellum,NA,,78
+Right-Thalamus-Proper,-,-,-,-,Right,subcortical,Right-Thalamus-Proper,Thalamus_Proper_R,thalamusproper_rh,R Subcortical,subcortical,,79
+Right-Caudate,-,-,-,-,Right,subcortical,Right-Caudate,Caudate_R,caudate_rh,R Subcortical,subcortical,5,80
+Right-Putamen,-,-,-,-,Right,subcortical,Right-Putamen,Putamen_R,putamen_rh,R Subcortical,subcortical,5,81
+Right-Pallidum,-,-,-,-,Right,subcortical,Right-Pallidum,Pallidum_R,pallidum_rh,R Subcortical,subcortical,5,82
+Right-Hippocampus,,24,-28,-10,Right,subcortical,Right-Hippocampus,Hippocampus_R,hippocampus_rh,R Subcortical,subcortical,2,83
+Right-Amygdala,-,-,-,-,Right,subcortical,Right-Amygdala,Amygdala_R,amygdala_rh,R Subcortical,subcortical,3,84
+Right-Accumbens-area,-,-,-,-,Right,subcortical,Right-Accumbens-area,Accumbens_area_R,accumbensarea_rh,R Subcortical,subcortical,,85
+Right-VentralDC/Hypothalamus,-,-,-,-,Right,subcortical,Right-VentralDC/Hypothalamus,Hypothalamus_R,ventralDC/Hypothalamus_rh,R Subcortical,subcortical,,86
+Left-VentralDC,-,-,-,-,Left,subcortical,Left-VentralDC,-,-,L Subcortical,subcortical,,-
+Left-choroid-plexus,-,-,-,-,Left,subcortical,Left-choroid-plexus,-,-,L Subcortical,subcortical,,-
+Right-VentralDC,-,-,-,-,Right,subcortical,Right-VentralDC,-,-,R Subcortical,subcortical,,-
+Right-choroid-plexus,-,-,-,-,Right,subcortical,Right-choroid-plexus,-,-,R Subcortical,subcortical,,-

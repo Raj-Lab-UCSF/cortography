@@ -11,3 +11,5 @@ dependencies:
     - pandas
     - scipy
     - notebook
+    - atlasreader
+    - nilearn
