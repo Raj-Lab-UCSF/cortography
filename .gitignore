@@ -1,0 +1,14 @@
+.DS_Store
+#ignore caches
+__pycache__
+.ipynb_checkpoints
+*.pyc
+
+#ignore figures
+**/*.jpg
+**/*.svg
+**/*.pdf
+**/*.tiff
+**/*.png
+
+*.key
