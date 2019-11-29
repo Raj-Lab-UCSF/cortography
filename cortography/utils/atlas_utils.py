@@ -110,7 +110,7 @@ def plot_glass_brains(color, coords, size):
 
     plotting.plot_connectome(connec, coords, node_size = size, node_color=color, display_mode='lyrz')
 
-def return_brain_paint_df(df, DK_convention='ctx', MAX=4, return_mean=False):
+def return_brain_paint_df(df, DK_convention='ctx', MAX=4):
     """
     Given a df with columns in the DK atlas,
     return a copy df with columns as required by brain_paint
@@ -157,30 +157,18 @@ def return_brain_paint_df(df, DK_convention='ctx', MAX=4, return_mean=False):
 
     #3. Scale data between 0 and MAX
     def minmaxscaler(X, min_val, max_val):
-        X_scaled = (X - min_val) / (max_val - min_val)
+        X_scaled = MAX * (X - min_val) / (max_val - min_val)
         return(X_scaled)
 
-    def percentile_scaling(df, MIN, MAX):
-        percentile_df = df.copy()
-        for column in percentile_df.columns:
-            if column != df.index.name:
-                #find min & max
-                min_val = np.nanpercentile(percentile_df[column], MIN)
-                max_val = np.nanpercentile(percentile_df[column], MAX)
-                #scale
-                percentile_df[column] = minmaxscaler(percentile_df[column], min_val, max_val)
-        return(percentile_df)
+    scaled_df = brain_painter_df.copy()
+    min = scaled_df.values.min()
+    max = scaled_df.values.max()
 
-    scaled_df = percentile_scaling(df=brain_painter_df, MIN=1, MAX=99)
-    scaled_df = scaled_df * MAX
-    for region in regions_not_found:
-        scaled_df[region] = 0
+    for column in scaled_df.columns:
+        scaled_df[column] = minmaxscaler(scaled_df[column], min, max)
 
     scaled_df = scaled_df.abs()
 
     scaled_df.index.name = 'Image-name-unique'
-
-    if return_mean == True:
-        scaled_df = pd.DataFrame(brain_painter_dtau_AD.mean(axis=0)).T
 
     return(scaled_df)
