@@ -109,3 +109,78 @@ def plot_glass_brains(color, coords, size):
     connec = np.array([[0]*num_regions]*num_regions)
 
     plotting.plot_connectome(connec, coords, node_size = size, node_color=color, display_mode='lyrz')
+
+def return_brain_paint_df(df, DK_convention='ctx', MAX=4, return_mean=False):
+    """
+    Given a df with columns in the DK atlas,
+    return a copy df with columns as required by brain_paint
+    DK_ordering = naming convention according to cortography DK file
+    MAX = max range of values in the df
+    return_mean = returns a df with mean values of all subjects
+    """
+    DK = load_atlas('DK')
+
+    brain_painter_regions = ['bankssts','caudalanteriorcingulate','caudalmiddlefrontal','cuneus','entorhinal',
+                             'frontalpole','fusiform','inferiorparietal','inferiortemporal','insula',
+                             'isthmuscingulate','lateraloccipital','lateralorbitofrontal','lingual',
+                             'medialorbitofrontal','middletemporal','paracentral','parahippocampal',
+                             'parsopercularis','parsorbitalis','parstriangularis','pericalcarine',
+                             'postcentral','posteriorcingulate','precentral','precuneus',
+                             'rostralanteriorcingulate','rostralmiddlefrontal','superiorfrontal',
+                             'superiorparietal','superiortemporal','supramarginal','temporalpole',
+                             'transversetemporal','unknown','Accumbens-area','Caudate',
+                             'Cerebellum-White-Matter','Inf-Lat-Vent','Pallidum','Thalamus-Proper',
+                             'Amygdala','Cerebellum-Cortex','Hippocampus','Lateral-Ventricle','Putamen','VentralDC']
+
+
+    #1. generate empty df with brain painter columns
+    brain_painter_df = pd.DataFrame(index=df.index)
+
+    #2. for each brain painter region, find the equivalent region in the df
+        #2.1 if found, get values
+        #2.2 if not found, append zeros
+    DK_left = DK[DK['Hemisphere'] == 'Left']
+    regions_not_found = []
+    for region in brain_painter_regions:
+        if DK_convention == 'ctx':
+            # name is in the form "ctx-lh-bankssts"
+            standard_name = DK_left[DK_left['Other Name 5'] == region].index
+        else:
+            # name is in the form of one of the columns in the DK df
+            standard_name = DK_left[DK_left['Other Name 5'] == region][DK_convention]
+
+        if len(standard_name) > 0:
+            brain_painter_df[region] = df[standard_name[0]]
+        else:
+            brain_painter_df[region] = 0.0
+            regions_not_found.append(region)
+
+    #3. Scale data between 0 and MAX
+    def minmaxscaler(X, min_val, max_val):
+        X_scaled = (X - min_val) / (max_val - min_val)
+        return(X_scaled)
+
+    def percentile_scaling(df, MIN, MAX):
+        percentile_df = df.copy()
+        for column in percentile_df.columns:
+            if column != df.index.name:
+                #find min & max
+                min_val = np.nanpercentile(percentile_df[column], MIN)
+                max_val = np.nanpercentile(percentile_df[column], MAX)
+                #scale
+                percentile_df[column] = minmaxscaler(percentile_df[column], min_val, max_val)
+        return(percentile_df)
+
+    scaled_df = percentile_scaling(df=brain_painter_df, MIN=1, MAX=99)
+    scaled_df = scaled_df * MAX
+    for region in regions_not_found:
+        scaled_df[region] = 0
+
+    scaled_df = scaled_df.abs()
+
+    scaled_df.index.name = 'Image-name-unique'
+
+    if return_mean == True:
+        scaled_df = pd.DataFrame(brain_painter_dtau_AD.mean(axis=0)).T
+
+    return(scaled_df)
