@@ -149,7 +149,7 @@ def return_brain_paint_df(df, DK_convention='ctx', MAX=4):
             # name is in the form of one of the columns in the DK df
             standard_name = DK_left[DK_left['Other Name 5'] == region][DK_convention]
 
-        if len(standard_name) > 0:
+        if len(standard_name) > 0 and standard_name[0] in df.columns:
             brain_painter_df[region] = df[standard_name[0]]
         else:
             brain_painter_df[region] = 0.0
