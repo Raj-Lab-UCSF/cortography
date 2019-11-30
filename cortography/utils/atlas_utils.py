@@ -138,9 +138,10 @@ def return_brain_paint_df(df, DK_convention='ctx', MAX=4):
 
     #2. for each brain painter region, find the equivalent region in the df
         #2.1 if found, get values
-        #2.2 if not found, append zeros
+        #2.2 if not found, append ~zeros~ min_val
     DK_left = DK[DK['Hemisphere'] == 'Left']
     regions_not_found = []
+    df_min = df.values.min()
     for region in brain_painter_regions:
         if DK_convention == 'ctx':
             # name is in the form "ctx-lh-bankssts"
@@ -152,7 +153,8 @@ def return_brain_paint_df(df, DK_convention='ctx', MAX=4):
         if len(standard_name) > 0 and standard_name[0] in df.columns:
             brain_painter_df[region] = df[standard_name[0]]
         else:
-            brain_painter_df[region] = 0.0
+            # brain_painter_df[region] = 0.0
+            brain_painter_df[region] = df_min
             regions_not_found.append(region)
 
     #3. Scale data between 0 and MAX
