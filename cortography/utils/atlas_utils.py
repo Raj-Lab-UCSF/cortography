@@ -88,7 +88,15 @@ def load_connectivity(atlas="DK", portion="RLLR"):
         return(connectivity)
 
 def load_laplacian(n=0):
-
+    """
+    Laplacians have these normalizations (from Ashish Raj):
+        n=0: L0 = diag(rowdegree) - C;
+        n=1: L1 = eye(nroi) - diag(1./(rowdegree+eps)) * C;
+        n=2: L2 = eye(nroi) - diag(1./(sqrt(rowdegree)+eps)) * C* diag(1./(sqrt(coldegree)+eps)) ;
+        n=3: L3 = eye(nroi) - diag(1./(sqrt(rowdegree.*coldegree)+eps)) * C; % * diag(1./(sqrt(coldegree)+eps)) ;
+        n=4: L4 = eye(nroi) - diag(1./(sqrt(sqrt(rowdegree.*coldegree)+eps))) * C * diag(1./(sqrt(sqrt(rowdegree.*coldegree)+eps)));
+        n=5: L5 = eye(nroi) - diag(1./(sqrt((rowdegree+coldegree)/2)+eps)) * C; % * diag(1./(sqrt(coldegree)+eps)) ;
+    """
     laplacian_filepath = get_file_path('connectivity_matrices/laplacians.mat')
     laplacian = pd.DataFrame(loadmat(laplacian_filepath)['laplacians'][0][0][n])
     DK = load_atlas(atlas="DK", portion="LRRL")
@@ -110,13 +118,16 @@ def plot_glass_brains(color, coords, size):
 
     plotting.plot_connectome(connec, coords, node_size = size, node_color=color, display_mode='lyrz')
 
-def return_brain_paint_df(df, DK_convention='ctx', MAX=4):
+def return_brain_paint_df(df, DK_convention='ctx', MAX=4, append_nan='zeros'):
     """
     Given a df with columns in the DK atlas,
     return a copy df with columns as required by brain_paint
     DK_ordering = naming convention according to cortography DK file
     MAX = max range of values in the df
     return_mean = returns a df with mean values of all subjects
+    append_nan = what to do with regions not found in the df. 'min' will
+      add the minimum value of the df to those regions (e.g. if -100 was no
+      disease. 'zero' will add zeros to those regions)
     """
     DK = load_atlas('DK')
 
@@ -153,8 +164,10 @@ def return_brain_paint_df(df, DK_convention='ctx', MAX=4):
         if len(standard_name) > 0 and standard_name[0] in df.columns:
             brain_painter_df[region] = df[standard_name[0]]
         else:
-            # brain_painter_df[region] = 0.0
-            brain_painter_df[region] = df_min
+            if append_nan == 'zeros':
+                brain_painter_df[region] = 0.0
+            if append_nan == 'min':
+                brain_painter_df[region] = df_min
             regions_not_found.append(region)
 
     #3. Scale data between 0 and MAX
@@ -169,7 +182,7 @@ def return_brain_paint_df(df, DK_convention='ctx', MAX=4):
     for column in scaled_df.columns:
         scaled_df[column] = minmaxscaler(scaled_df[column], min, max)
 
-    scaled_df = scaled_df.abs()
+    # scaled_df = scaled_df.abs()
 
     scaled_df.index.name = 'Image-name-unique'
 
