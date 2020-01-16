@@ -96,9 +96,18 @@ def load_connectivity(atlas="DK", portion="RLLR"):
 
 
 def load_laplacian(n=0):
+    """
+    Laplacians have these normalizations (from Ashish Raj):
+        n=0: L0 = diag(rowdegree) - C;
+        n=1: L1 = eye(nroi) - diag(1./(rowdegree+eps)) * C;
+        n=2: L2 = eye(nroi) - diag(1./(sqrt(rowdegree)+eps)) * C* diag(1./(sqrt(coldegree)+eps)) ;
+        n=3: L3 = eye(nroi) - diag(1./(sqrt(rowdegree.*coldegree)+eps)) * C; % * diag(1./(sqrt(coldegree)+eps)) ;
+        n=4: L4 = eye(nroi) - diag(1./(sqrt(sqrt(rowdegree.*coldegree)+eps))) * C * diag(1./(sqrt(sqrt(rowdegree.*coldegree)+eps)));
+        n=5: L5 = eye(nroi) - diag(1./(sqrt((rowdegree+coldegree)/2)+eps)) * C; % * diag(1./(sqrt(coldegree)+eps)) ;
+    """
+    laplacian_filepath = get_file_path('connectivity_matrices/laplacians.mat')
+    laplacian = pd.DataFrame(loadmat(laplacian_filepath)['laplacians'][0][0][n])
 
-    laplacian_filepath = get_file_path("connectivity_matrices/laplacians.mat")
-    laplacian = pd.DataFrame(loadmat(laplacian_filepath)["laplacians"][0][0][n])
     DK = load_atlas(atlas="DK", portion="LRRL")
     DK = DK.drop(
         [
@@ -122,6 +131,74 @@ def plot_glass_brains(color, coords, size):
 
     connec = np.array([[0] * num_regions] * num_regions)
 
-    plotting.plot_connectome(
-        connec, coords, node_size=size, node_color=color, display_mode="lyrz"
-    )
+    plotting.plot_connectome(connec, coords, node_size = size, node_color=color, display_mode='lyrz')
+
+def return_brain_paint_df(df, DK_convention='ctx', MAX=4, append_nan='zeros'):
+    """
+    Given a df with columns in the DK atlas,
+    return a copy df with columns as required by brain_paint
+    DK_ordering = naming convention according to cortography DK file
+    MAX = max range of values in the df
+    return_mean = returns a df with mean values of all subjects
+    append_nan = what to do with regions not found in the df. 'min' will
+      add the minimum value of the df to those regions (e.g. if -100 was no
+      disease. 'zero' will add zeros to those regions)
+    """
+    DK = load_atlas('DK')
+
+    brain_painter_regions = ['bankssts','caudalanteriorcingulate','caudalmiddlefrontal','cuneus','entorhinal',
+                             'frontalpole','fusiform','inferiorparietal','inferiortemporal','insula',
+                             'isthmuscingulate','lateraloccipital','lateralorbitofrontal','lingual',
+                             'medialorbitofrontal','middletemporal','paracentral','parahippocampal',
+                             'parsopercularis','parsorbitalis','parstriangularis','pericalcarine',
+                             'postcentral','posteriorcingulate','precentral','precuneus',
+                             'rostralanteriorcingulate','rostralmiddlefrontal','superiorfrontal',
+                             'superiorparietal','superiortemporal','supramarginal','temporalpole',
+                             'transversetemporal','unknown','Accumbens-area','Caudate',
+                             'Cerebellum-White-Matter','Inf-Lat-Vent','Pallidum','Thalamus-Proper',
+                             'Amygdala','Cerebellum-Cortex','Hippocampus','Lateral-Ventricle','Putamen','VentralDC']
+
+
+    #1. generate empty df with brain painter columns
+    brain_painter_df = pd.DataFrame(index=df.index)
+
+    #2. for each brain painter region, find the equivalent region in the df
+        #2.1 if found, get values
+        #2.2 if not found, append ~zeros~ min_val
+    DK_left = DK[DK['Hemisphere'] == 'Left']
+    regions_not_found = []
+    df_min = df.values.min()
+    for region in brain_painter_regions:
+        if DK_convention == 'ctx':
+            # name is in the form "ctx-lh-bankssts"
+            standard_name = DK_left[DK_left['Other Name 5'] == region].index
+        else:
+            # name is in the form of one of the columns in the DK df
+            standard_name = DK_left[DK_left['Other Name 5'] == region][DK_convention]
+
+        if len(standard_name) > 0 and standard_name[0] in df.columns:
+            brain_painter_df[region] = df[standard_name[0]]
+        else:
+            if append_nan == 'zeros':
+                brain_painter_df[region] = 0.0
+            if append_nan == 'min':
+                brain_painter_df[region] = df_min
+            regions_not_found.append(region)
+
+    #3. Scale data between 0 and MAX
+    def minmaxscaler(X, min_val, max_val):
+        X_scaled = MAX * (X - min_val) / (max_val - min_val)
+        return(X_scaled)
+
+    scaled_df = brain_painter_df.copy()
+    min = scaled_df.values.min()
+    max = scaled_df.values.max()
+
+    for column in scaled_df.columns:
+        scaled_df[column] = minmaxscaler(scaled_df[column], min, max)
+
+    # scaled_df = scaled_df.abs()
+
+    scaled_df.index.name = 'Image-name-unique'
+
+    return(scaled_df)
