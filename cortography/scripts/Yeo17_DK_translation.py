@@ -9,20 +9,20 @@ from atlasreader import atlasreader
 from nilearn._utils import check_niimg
 
 #### Calculate voxel data:
-Yeo_labels = open('../data/atlases/Yeo2011_17Networks_MNI152.txt', 'r')
+Yeo_labels = open('../data/atlases/Yeo/Yeo2011_17Networks_MNI152.txt', 'r')
 Yeo_labels = Yeo_labels.read().split('\n')
 Yeo_labels.insert(0,"None") #I believe the areas were numbered 1-7 with "0" reserved for white matter
 
 #### Read Yeo matrix:
-Yeo_template = "../data/atlases/Yeo2011_17Networks_MNI152.nii"
+Yeo_template = "../data/atlases/Yeo/Yeo2011_17Networks_MNI152.nii"
 Yeo = nibabel.load(Yeo_template)
-Yeo_data = Yeo.get_data()
+Yeo_data = Yeo.get_fdata()
 
 #### Loop through MNI-152 template Yeo_data
 DK_data =  atlasreader.get_atlas('desikan_killiany')['image'].get_data()
 DK_atlas = atlasreader.get_atlas('desikan_killiany')
 
-Yeo_affine = check_niimg(Yeo_template).Yeo_affine
+Yeo_affine = check_niimg(Yeo_template).affine
 DK_affine = check_niimg(atlasreader.get_atlas('desikan_killiany')['image']).affine
 
 #### compute the DK voxel based distribution of networks per region:
