@@ -55,16 +55,17 @@ for DK_i in range(0, DK_data.shape[0]):
 # Save 17 networks map... in .mat format?
 savemat('DK_dict17_voxels.mat', DK_dict_voxels)
 savemat('DK_dict17_counts.mat', DK_dict_counts)
+
 # save as python:
 np.save('DK_dict_voxels.npy', DK_dict_voxels)
 np.save('DK_dict_counts.npy', DK_dict_counts)
 
-# convert opandas dataframe:
+# convert to pandas dataframe:
 pd.DataFrame(DK_dict_counts)
 
 # Prepare the data for CSV:
 # read in atlas names
-DK_region_names = pd.read_csv("../data/dk_names.csv").set_index('Atlas')
+DK_region_names = pd.read_csv("../data/atlases/DK/dk_names.csv").set_index('Atlas')
 DK_dict_86_regions = {}
 for region in DK_region_names.index:
     DK_dict_86_regions.update({region:DK_dict_counts[region]})
@@ -75,7 +76,7 @@ DK_dict_counts = pd.DataFrame(DK_dict_86_regions)
 DK_dict_counts = DK_dict_counts.drop(['None'])
 
 # Normalize:
-DK_df_normalized = DK_dict_counts.div(DK_dict_counts.sum(axis=0). axis = 1)
+DK_df_normalized = DK_dict_counts.div(DK_dict_counts.sum(axis=0), axis = 1)
 
 # save to file
 DK_df_normalized.to_csv('DK_Yeo17_normalized.csv')
