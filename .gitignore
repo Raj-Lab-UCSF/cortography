@@ -3,6 +3,7 @@
 __pycache__
 .ipynb_checkpoints
 *.pyc
+*.npy
 
 #ignore figures
 **/*.jpg
