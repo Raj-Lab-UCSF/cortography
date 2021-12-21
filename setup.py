@@ -7,5 +7,9 @@ setup(name='cortography',
       author='Pablo F. Damasceno',
       author_email='pablo.damasceno@ucsf.edu',
       license='MIT',
-      packages=['cortography'],
+      packages=['cortography','cortography.utils','cortography.scripts'],
+      package_dir = {
+            'cortography' : 'cortography',
+            'cortography.utils' : 'cortography/utils',
+            'cortography.scripts' : 'cortography/scripts'},
       zip_safe=False)
