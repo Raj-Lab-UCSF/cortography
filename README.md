@@ -8,4 +8,12 @@
 
 # Utilities
 - Collection of useful functions for the Raj lab
-- Installation instructions: run `pip install .` inside the rajutils folder
+
+## Installation instructions:
+- run `pip install .` inside the rajutils folder
+
+## Example usage
+```
+>>> from cortography.utils import atlas_utils
+>>> atlas_utils.load_atlas(atlas='DK', portion='LRRL')
+```
