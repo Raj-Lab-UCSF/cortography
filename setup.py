@@ -1,11 +1,11 @@
 from setuptools import setup
 
-setup(name='rajutils',
+setup(name='cortography',
       version='0.1',
       description='Set of python tools useful to the Raj lab',
-      url='https://git.radiology.ucsf.edu/rajlab/rajutils/',
+      url='https://github.com/Raj-Lab-UCSF/cortography',
       author='Pablo F. Damasceno',
       author_email='pablo.damasceno@ucsf.edu',
       license='MIT',
-      packages=['rajutils'],
+      packages=['cortography'],
       zip_safe=False)
